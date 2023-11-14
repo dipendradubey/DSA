@@ -1,2 +1,3 @@
 # DSA
-Learning DSA through Rohit Negi Channer
+Learning DSA through Rohit Negi Channel
+
