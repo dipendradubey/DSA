@@ -5,11 +5,15 @@ void printPattern1();
 void printPattern2();
 void printPattern3();
 void printPattern4();
+void printPattern5();
+void printPattern6();
 int main(){
     //printPattern1();
     //printPattern2();
     //printPattern3();
-    printPattern4();
+    //printPattern4();
+    //printPattern5();
+     printPattern6();
 }
 
 void printPattern1(){
@@ -80,5 +84,39 @@ void printPattern4(){
         }
         cout<<endl;
    }
+
+}
+
+void printPattern5(){
+    /*54321
+    54321
+    54321
+    54321*/
+
+    for (int row=1; row<=5; row++){
+        for (int col=5; col>=1; col--){
+            cout << col <<" ";
+        }
+        cout<<endl;
+    }
+    
+}
+
+void printPattern6(){
+/*
+F G H I J K  
+F G H I J K
+F G H I J K
+F G H I J K
+F G H I J K
+*/
+
+    for (int row=1; row<=5; row++){
+        for (int col=1; col<=6; col++){
+            char data = 'E'+col;
+            cout<<data<<" ";
+        }
+        cout <<endl;
+    }
 
 }
