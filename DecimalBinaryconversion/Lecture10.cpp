@@ -79,7 +79,9 @@ void reverseNum()
     while(n > 0){
         int rem = n%10; //3 2
         n = n/10; //12 1
-        ans = ans*multiply + rem; //3
+        if (ans >= INT_MIN/10 && ans <= INT_MAX/10){
+            ans = ans*multiply + rem;
+        }
         //multiply*=10;
     }
     cout<<"reverse no is: "<<ans<<endl;
