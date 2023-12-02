@@ -2,9 +2,11 @@
 using namespace std;
 void convertSmallToCapital(char c);
 void armStrongNo();
+void trailingZeroInFact();
 int main(){
     //convertSmallToCapital('p');
-    armStrongNo();
+    //armStrongNo();
+    trailingZeroInFact();
     return 0;
 }
 
@@ -36,6 +38,18 @@ void armStrongNo(){
     }
 }
 
-int getPowerOfDigit(){
-        return 0;
+void trailingZeroInFact(){
+    int num = 2;
+    int ans = 1;
+    for (int n = 1; n<=num; n++)
+    ans*=n;
+
+    cout<<"Factorial value is "<<ans<<endl;
+
+    int count = 0;
+    while (ans%10==0){
+        ans/=10;
+        count++;
+    }
+    cout<<count;
 }
