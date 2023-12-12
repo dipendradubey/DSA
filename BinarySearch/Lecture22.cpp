@@ -2,9 +2,10 @@
 using namespace std;
 
 void binarysearch();
-void binarysearchfordecreasingElemet();
+int binarysearchfordecreasingElemet();
 int main(){
-    binarysearch();
+    //binarysearch();
+    cout<<"Index of element is "<< binarysearchfordecreasingElemet();
 }
 
 void binarysearch(){
@@ -35,6 +36,25 @@ void binarysearch(){
     }
 }
 
-void binarysearchfordecreasingElemet(){
+int binarysearchfordecreasingElemet(){
+    int array[5] = {5,4, 3, 2, 1};
+    int n = 5;
+    int start = 0, end = n-1, mid=0;
+    int key = 25;
+    bool isfound = false;
+    while (start<=end)
+    {
+        mid = (start+end)/2;
+        if (array[mid]==key){
+            return mid;
+        }
+        else if (array[mid]<key){
+            end = mid-1;
+        }
+        else{
+            start = mid+1;
+        }
+    }
+    return -1;
     
 }
