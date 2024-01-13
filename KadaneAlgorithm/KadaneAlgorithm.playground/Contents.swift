@@ -55,3 +55,52 @@ func maxOfSumArray()->Int{
     return sum
 }
 print(maxOfSumArray())
+
+//Max difference b/w two elements
+//Here used extra array so auxiliary space is o(n)
+func maxDifferenceMethod1(){
+    let arr = [5, 8, 12, 2, 3, 7, 4]
+    let length = arr.count
+    var arrSuffix = Array(repeating: arr[length-1], count: length)
+    var maxSuff = arr[length-1]
+    for index in stride(from: length - 2, through: 0, by: -1){
+        maxSuff = max(arr[index], maxSuff)
+        arrSuffix[index] = maxSuff
+    }
+    
+    var maxDiff = Int.min
+    for index in (0..<length-1).reversed(){
+        let value = arrSuffix[index+1] - arr[index]
+        maxDiff = max(value, maxDiff)
+    }
+    print(maxDiff)
+}
+maxDifferenceMethod1()
+
+//Here time complexity is o(n)
+func maxDifferenceMethod2(){
+    let arr = [5, 8, 12, 2, 3, 7, 4]
+    let length = arr.count
+    var maxSuff = arr[length-1], maxDiff = Int.min
+    for index in stride(from: length - 2, through: 0, by: -1){
+        let value = maxSuff - arr[index]
+        maxDiff = max(maxDiff, value)
+        maxSuff = max(maxSuff, arr[index])
+    }
+   print(maxDiff)
+}
+maxDifferenceMethod2()
+
+//Maximum prefix sum for a given range (geek for geeks)
+func maxPrefixForGivenSum(){
+    let arr = [-1, 2, 3, -5]
+    let L1 = 1, R1 = 3
+    let length = arr.count
+    var maxPrefix = arr[L1], maxSum = Int.min
+    for index in L1+1...R1{
+        maxPrefix += arr[index]
+        maxSum = max(maxSum, maxPrefix)
+    }
+    print(maxSum)
+}
+maxPrefixForGivenSum()
