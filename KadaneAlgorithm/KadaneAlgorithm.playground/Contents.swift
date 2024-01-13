@@ -104,3 +104,30 @@ func maxPrefixForGivenSum(){
     print(maxSum)
 }
 maxPrefixForGivenSum()
+
+//Equal Sums(Geek for Geeks)
+func equalSum()->[Int]{
+    let arr = [3, 2, 1, 5, 7, 8]
+    //This was added tho handle edge cases
+    if (arr.count==1){
+        return [arr[0], 2, 2]
+    }
+    let sum = arr.reduce(0,+)
+    var sumSuffix = 0, diff = Int.max, ansIndex = -1, firstArr = 0
+    for index in 0..<arr.count-1{
+        var isValuePositive = 1
+        sumSuffix+=arr[index]
+        var value = sum - 2*sumSuffix
+        if value<0{
+            value *= -1
+            isValuePositive = 2
+        }
+        if value<diff{
+            ansIndex = index+2
+            firstArr = isValuePositive
+        }
+        diff = min(diff, value)
+    }
+    return [diff, ansIndex, firstArr]
+}
+print(equalSum())
