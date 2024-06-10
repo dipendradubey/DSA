@@ -80,6 +80,20 @@ func checkPangram()->Bool{
     return true
 }
 
-let x = checkPangram()
-print (x)
-
+//Sort a string
+func sortString(){
+    let x = "gddffaaeeffhhe"
+    var arrCount = Array(repeating: 0, count: 26)
+    for char in x{
+        let index = Int(char.asciiValue ?? 0) - 97
+        arrCount[index] += 1
+    }
+    var string = ""
+    for index in 0...25{
+        if arrCount[index] == 0 {continue}
+        string += String(Array(repeating: Character(UnicodeScalar(97+index)!), count: arrCount[index]))
+    }
+    print(arrCount)
+    print(string)
+}
+sortString()
