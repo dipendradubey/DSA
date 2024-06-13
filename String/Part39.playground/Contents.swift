@@ -20,9 +20,30 @@ func sortVowels(_ s: String) -> String {
             arrString[index] = "#"
         }
     }
-    print(arrString)
+    var arrVowelString:[Character] = []
+    for index in 0...25{
+        if arrUpperrcase[index] != 0{
+            let asciivalue = 65+index
+            let char = Character(UnicodeScalar(asciivalue)!)
+            arrVowelString += Array(repeating: char, count: arrUpperrcase[index])
+        }
+    }
     
+    for index in 0...25{
+        if arrLowercase[index] != 0{
+            let asciivalue = 97+index
+            let char = Character(UnicodeScalar(asciivalue)!)
+            arrVowelString += Array(repeating: char, count: arrLowercase[index])
+        }
+    }
     
-    return "a"
+    var vowelIndex = 0
+    for index in 0..<arrString.count{
+        if arrString[index] == "#"{
+            arrString[index] = arrVowelString[vowelIndex]
+            vowelIndex += 1
+        }
+    }
+    return String(arrString)
 }
-sortVowels("Aeetcode")
+sortVowels("Leetcode")
