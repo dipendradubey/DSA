@@ -51,28 +51,30 @@ func sortVowels(_ s: String) -> String {
 
 //Solve leetcode415
 func addStrings(_ num1: String, _ num2: String) -> String {
-    var index = num2.count - 1, carry = 0
     var sum = ""
-    let arrNum1 = Array(num1), arrNum2 = Array(num2)
+    var arrNum1 = Array(num1), arrNum2 = Array(num2)
+    let num1Count = num1.count, num2Count = num2.count
+    if num1Count > num2Count{
+        arrNum2 = Array(repeating: "0", count: num1Count-num2Count) + arrNum2
+    }
+    else if num2Count > num1Count{
+        arrNum1 = Array(repeating: "0", count: num2Count-num1Count) + arrNum1
+    }
+    var index = arrNum1.count - 1, carry = 0
+    
     while index >= 0{
         let tempSum = (Int(String(arrNum1[index])) ?? 0) + (Int(String(arrNum2[index])) ?? 0) + carry
         sum = String(tempSum%10) + sum
         carry = tempSum/10
-        print(Int(String(arrNum1[index])) ?? 0,Int(String(arrNum2[index])) ?? 0, sum, carry)
         index -= 1
         
     }
-    index = num1.count - num2.count - 1
-    while index >= 0{
-        let tempSum = (Int(String(arrNum1[index])) ?? 0) + carry
-        sum = String(tempSum%10) + sum
-        carry = tempSum/10
-        index -= 1
-    }
-    while carry>0{
+    if carry>0{
         sum = String(carry) + sum
     }
     return sum
 }
 
-print(addStrings("1123", "567"))
+
+
+print(addStrings("11", "123"))
