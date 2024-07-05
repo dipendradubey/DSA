@@ -42,9 +42,60 @@ func getLps(for arr:[Character], for arrLPS:inout [Int]){
     }
 }
 
-print(minChar("ROORSP"))
-///print(greeting)
+//Circular pattern matching
+//See if given string A is available in circular pattern B
 
+func circularPattern(A:String, B:String)->Int{
+    var parentString = B+B
+    var arrLPS = Array(repeating: 0, count: A.count)
+    getLps(for: Array(A), for: &arrLPS)
+    
+    return stringMatch(arrLPS: arrLPS, child: A, parent: parentString)
+}
 
+func stringMatch(arrLPS:[Int],child:String, parent:String)->Int{
+    var first = 0, second = 0
+    let m = child.count, n = parent.count
+    let arrChild = Array(child), arrParent = Array(parent)
+    while second<m && first<n{
+        if arrParent[first] == arrChild[second]{
+            first+=1
+            second+=1
+        }else{
+            if second == 0{
+               first+=1
+            }else{
+                second = arrLPS[second-1]
+            }
+        }
+    }
+    if m==second{
+        return 1
+    }
+    return -1
+}
 
-print (minChar("ABAC"))
+//print(circularPattern(A: "CDEB", B: "ABCD"))
+
+//Leetcode 686 Repeated string match
+
+func repeatedStringMatch(_ a: String, _ b: String) -> Int {
+    var temp = a, times = 1
+    while temp.count<b.count{
+        temp += a
+        times+=1
+    }
+    var arrLPS = Array(repeating: 0, count: b.count)
+    getLps(for: Array(b), for: &arrLPS)
+    
+    if stringMatch(arrLPS: arrLPS, child: b, parent: temp)==1{
+        return times
+    }
+    else if stringMatch(arrLPS: arrLPS, child: b, parent: temp+a)==1{
+        return times + 1
+    }
+    
+    return -1
+}
+
+print(repeatedStringMatch("a", "aa"))
