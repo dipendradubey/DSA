@@ -16,3 +16,9 @@ func minSubArrayLen(_ target: Int, _ nums: [Int]) -> Int {
 
 let count = minSubArrayLen(11, [1,1,1,1,1,1,1,1])
 print(count)
+
+//Leetcode problem 76 Minimum Window Substring
+func minWindow(_ s: String, _ t: String) -> String {
+  
+    return "-1"
+}
