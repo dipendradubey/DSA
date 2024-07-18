@@ -20,48 +20,49 @@ let count = minSubArrayLen(11, [1,1,1,1,1,1,1,1])
 //Leetcode problem 76 Minimum Window Substring
 func minWindow(_ s: String, _ t: String) -> String {
     var  dict:[Character:Int] = [:]
-    var total = 0, subStrcount = Int.max, index = -1
+    var total = t.count, subStrcount = Int.max, index = -1
     var start = 0, end = 0
     let arrStr = Array(s), n = s.count
     var subString = ""
     for char in t{
-        dict[char] = dict[char] ?? 0 + 1
+        let count = (dict[char] ?? 0) + 1
+        dict[char] = count
     }
-    print(dict)
-    
     while end < n{
-        print(dict[arrStr[end]], arrStr[end])
-        let count = dict[arrStr[end]] ?? 0 - 1
-        dict[arrStr[end]] = count
+        
+        let char = arrStr[end]
+        let count = (dict[char] ?? 0) - 1
+        dict[char] = count
         if count >= 0{
             total -= 1
         }
-        /*
         while total == 0 && start <= end{
+            
             if subStrcount > end-start+1{
                 index = start
                 subStrcount = end-start+1
             }
-            let count = dict[arrStr[start]] ?? 0 + 1
-            dict[arrStr[start]] = count
+            let char = arrStr[start]
+            let count = (dict[char] ?? 0) + 1
+            dict[char] = count
             if count > 0{
                 total += 1
             }
             start += 1
         }
-        */
+        
         end+=1
     }
-    print(dict)
+    
     if index != -1
     {
-        for i in index...index+subStrcount{
-            subString+=String(arrStr[index])
+        for i in index...index+subStrcount-1{
+            subString+=String(arrStr[i])
         }
     }
     
     return subString
 }
 
-print("hello")
-print(minWindow("ADOBECODEBANC", "ABC"))
+//print("====Answer is===")
+print(minWindow("bbaa", "aba"))
