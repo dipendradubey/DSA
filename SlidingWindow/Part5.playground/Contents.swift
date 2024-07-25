@@ -60,16 +60,17 @@ func subarraysWithKDistinct(_ nums: [Int], _ k: Int) -> Int {
     let minKDistinctSubArray = subarraysWithMinKDistinct(nums, k, n: n)
     let minK_1DistinctSubArray = subarraysWithMinKDistinct(nums, k+1, n: n)
     return minKDistinctSubArray - minK_1DistinctSubArray
+    //return minKDistinctSubArray
 }
 
 
 
 func subarraysWithMinKDistinct(_ nums: [Int], _ k: Int, n:Int) -> Int {
-    
     var start=0, end=0, count=0, total=0
     var dictCount:[Int:Int]=[:]
     while end<n{
         var numCount = (dictCount[nums[end]] ?? 0) + 1
+        dictCount[nums[end]] = numCount
         if numCount == 1{
             count+=1
         }
