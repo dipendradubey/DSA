@@ -22,11 +22,19 @@ func sumOfNum(_ num:Int)->Int{
 //power of num to n times
 print(powOfNum(10,0))
 func powOfNum(_ num:Int, _ n:Int)->Int{
-    if n==1{
+    if n==1 || num==0{
         return num
     }
     print("fn is callled")
     return num*powOfNum(num,n-1)
     
-    
+}
+
+print(squareSum(3))
+//sum of sqaure of number
+func squareSum(_ n:Int)->Int{
+    if n==1{
+        return 1
+    }
+    return n*n + squareSum(n-1)
 }
