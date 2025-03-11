@@ -25,3 +25,4 @@ func lps(_ s:String)->Int{
     return lps[count-1]
 }
 print(lps("abcabdabcabdabdab"))
+
